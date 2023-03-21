@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package proto;
+
+message Pass {}
+
+service GraphService {
+    rpc CheckInteractions(CheckInteractionsRequest) returns (CheckInteractionsResponse);
+}
+
+message I18n {
+    string name_en = 1;
+    string name_ar = 2;
+}
+
+message Medecine {
+    I18n name = 1;
+    repeated string drugs = 2;
+} 
+
+message Interaction {
+    repeated string drugs = 1;
+    string professionalEffect = 2;
+    string consumerEffect = 3;
+    string severity = 4;
+}
+
+message Permutation {
+    repeated I18n medecines = 1;
+    repeated Interaction interactions = 2;
+}
+
+message CheckInteractionsRequest {
+    repeated Medecine medecines = 1;
+}
+
+message CheckInteractionsResponse {
+    repeated Permutation permutations = 1;
+}
