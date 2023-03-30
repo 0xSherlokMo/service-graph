@@ -12,16 +12,15 @@ type resource string
 type Comparable interface {
 	~int | ~float32 | ~float64 | ~string
 }
+type ResourceWithClosure interface {
+	Close(ctx context.Context) error
+}
 
 const (
 	EmptyString    = ""
 	SpaceDelimiter = " "
 	ResourceNeo4j  = "[Neo4j]"
 )
-
-type ResourceWithClosure interface {
-	Close(ctx context.Context) error
-}
 
 type CloserFunc = func()
 
