@@ -61,6 +61,8 @@ func NewInteraction(options neo4jDriver.ResultWithContext) Interaction {
 	}
 }
 
+// TODO:
+// Insert hash preprocessed in the graph (pipeline tool); to avoid runtime hashing.
 func (i Interaction) HashKey() Hash {
 	internalHash := i.Metadata.Hash
 
