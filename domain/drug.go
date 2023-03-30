@@ -1,11 +1,17 @@
 package domain
 
 import (
+	"sort"
+	"strings"
+
 	"github.com/graduation-fci/service-graph/proto"
 	neo4jDriver "github.com/neo4j/neo4j-go-driver/v5/neo4j"
 )
 
-type Drug = string
+type (
+	Drug = string
+	Hash = string
+)
 
 func DrugSet(medecines []*proto.Medecine) []Drug {
 	drugsMap := make(map[Drug]Empty)
@@ -53,4 +59,27 @@ func NewInteraction(options neo4jDriver.ResultWithContext) Interaction {
 			ProfessionalEffect: professionalEffect.(string),
 		},
 	}
+}
+
+func (i Interaction) HashKey() Hash {
+	internalHash := i.Metadata.Hash
+
+	if internalHash == EmptyString {
+		return EmptyString
+	}
+
+	internalHash = strings.ToLower(internalHash)
+	splitHash := strings.Split(internalHash, SpaceDelimiter)
+
+	sort.Strings(splitHash)
+	return strings.Join(splitHash, EmptyString)
+}
+
+func InteractionsMap(interactions []Interaction) map[Hash]InteractionMetadata {
+	hashMap := make(map[Hash]InteractionMetadata)
+	for _, interaction := range interactions {
+		key := interaction.HashKey()
+		hashMap[key] = interaction.Metadata
+	}
+	return hashMap
 }

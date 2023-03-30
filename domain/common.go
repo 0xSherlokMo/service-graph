@@ -9,7 +9,11 @@ type Empty = struct{}
 
 type resource string
 
-const ResourceNeo4j = "[Neo4j]"
+const (
+	EmptyString    = ""
+	SpaceDelimiter = " "
+	ResourceNeo4j  = "[Neo4j]"
+)
 
 type ResourceWithClosure interface {
 	Close(ctx context.Context) error
