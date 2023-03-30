@@ -47,7 +47,7 @@ func NewInteraction(options neo4jDriver.ResultWithContext) Interaction {
 	node2, _ := options.Record().Get("node2.name")
 	consumerEffect, _ := options.Record().Get("consumerEffect")
 	professionalEffect, _ := options.Record().Get("professionalEffect")
-	severity, _ := options.Record().Get("consumerEffect")
+	severity, _ := options.Record().Get("severity")
 	hash, _ := options.Record().Get("hash")
 	return Interaction{
 		Node1: node1.(Drug),
@@ -70,6 +70,18 @@ func (i Interaction) HashKey() Hash {
 
 	internalHash = strings.ToLower(internalHash)
 	splitHash := strings.Split(internalHash, SpaceDelimiter)
+
+	sort.Strings(splitHash)
+	return strings.Join(splitHash, EmptyString)
+}
+
+func ToInternalHash(concatinationHash Hash) Hash {
+	if concatinationHash == EmptyString {
+		return EmptyString
+	}
+
+	concatinationHash = strings.ToLower(concatinationHash)
+	splitHash := strings.Split(concatinationHash, SpaceDelimiter)
 
 	sort.Strings(splitHash)
 	return strings.Join(splitHash, EmptyString)
