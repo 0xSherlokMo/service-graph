@@ -5,19 +5,17 @@ import (
 	"log"
 )
 
-type Empty = struct{}
-
-type resource string
-
 type (
+	resource   string
+	Empty      = struct{}
 	CloserFunc = func()
 	Comparable interface {
 		~int | ~float32 | ~float64 | ~string
 	}
+	ResourceWithClosure interface {
+		Close(ctx context.Context) error
+	}
 )
-type ResourceWithClosure interface {
-	Close(ctx context.Context) error
-}
 
 const (
 	EmptyString    = ""
