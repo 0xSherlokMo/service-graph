@@ -57,6 +57,6 @@ func (d *DrugRespository) Interaction(drugSet []domain.Drug) ([]domain.Interacti
 		}
 		return interactions, nil
 	})
-	log.Println(interactions)
+
 	return interactions, err
 }
