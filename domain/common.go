@@ -9,9 +9,12 @@ type Empty = struct{}
 
 type resource string
 
-type Comparable interface {
-	~int | ~float32 | ~float64 | ~string
-}
+type (
+	CloserFunc = func()
+	Comparable interface {
+		~int | ~float32 | ~float64 | ~string
+	}
+)
 type ResourceWithClosure interface {
 	Close(ctx context.Context) error
 }
@@ -21,8 +24,6 @@ const (
 	SpaceDelimiter = " "
 	ResourceNeo4j  = "[Neo4j]"
 )
-
-type CloserFunc = func()
 
 func HandleClosure(ctx context.Context, connection ResourceWithClosure, tag resource) {
 	err := connection.Close(ctx)
