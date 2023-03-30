@@ -9,6 +9,10 @@ type Empty = struct{}
 
 type resource string
 
+type Comparable interface {
+	~int | ~float32 | ~float64 | ~string
+}
+
 const (
 	EmptyString    = ""
 	SpaceDelimiter = " "
@@ -26,4 +30,8 @@ func HandleClosure(ctx context.Context, connection ResourceWithClosure, tag reso
 	if err != nil {
 		log.Println(tag, "Error while closing resource connection")
 	}
+}
+
+func Assert[C Comparable](needle, haystick C) bool {
+	return needle == haystick
 }
