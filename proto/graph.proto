@@ -35,7 +35,7 @@ message Permutation {
 
 message CheckInteractionsRequest {
     repeated Medecine medecines = 1;
-    string medicationId = 2;
+    int64 medicationId = 2;
 }
 
 message CheckInteractionsResponse {
