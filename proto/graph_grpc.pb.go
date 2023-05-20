@@ -43,21 +43,19 @@ func (c *graphServiceClient) CheckInteractions(ctx context.Context, in *CheckInt
 }
 
 // GraphServiceServer is the server API for GraphService service.
-// All implementations must embed UnimplementedGraphServiceServer
+// All implementations should embed UnimplementedGraphServiceServer
 // for forward compatibility
 type GraphServiceServer interface {
 	CheckInteractions(context.Context, *CheckInteractionsRequest) (*CheckInteractionsResponse, error)
-	mustEmbedUnimplementedGraphServiceServer()
 }
 
-// UnimplementedGraphServiceServer must be embedded to have forward compatible implementations.
+// UnimplementedGraphServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedGraphServiceServer struct {
 }
 
 func (UnimplementedGraphServiceServer) CheckInteractions(context.Context, *CheckInteractionsRequest) (*CheckInteractionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckInteractions not implemented")
 }
-func (UnimplementedGraphServiceServer) mustEmbedUnimplementedGraphServiceServer() {}
 
 // UnsafeGraphServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to GraphServiceServer will
