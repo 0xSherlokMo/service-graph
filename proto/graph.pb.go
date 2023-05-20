@@ -113,6 +113,61 @@ func (x *I18N) GetNameAr() string {
 	return ""
 }
 
+type Notification struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	En string `protobuf:"bytes,1,opt,name=en,proto3" json:"en,omitempty"`
+	Ar string `protobuf:"bytes,2,opt,name=ar,proto3" json:"ar,omitempty"`
+}
+
+func (x *Notification) Reset() {
+	*x = Notification{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_graph_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Notification) ProtoMessage() {}
+
+func (x *Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_graph_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Notification.ProtoReflect.Descriptor instead.
+func (*Notification) Descriptor() ([]byte, []int) {
+	return file_graph_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Notification) GetEn() string {
+	if x != nil {
+		return x.En
+	}
+	return ""
+}
+
+func (x *Notification) GetAr() string {
+	if x != nil {
+		return x.Ar
+	}
+	return ""
+}
+
 type Medecine struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -125,7 +180,7 @@ type Medecine struct {
 func (x *Medecine) Reset() {
 	*x = Medecine{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_graph_proto_msgTypes[2]
+		mi := &file_graph_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -138,7 +193,7 @@ func (x *Medecine) String() string {
 func (*Medecine) ProtoMessage() {}
 
 func (x *Medecine) ProtoReflect() protoreflect.Message {
-	mi := &file_graph_proto_msgTypes[2]
+	mi := &file_graph_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +206,7 @@ func (x *Medecine) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Medecine.ProtoReflect.Descriptor instead.
 func (*Medecine) Descriptor() ([]byte, []int) {
-	return file_graph_proto_rawDescGZIP(), []int{2}
+	return file_graph_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Medecine) GetName() *I18N {
@@ -182,7 +237,7 @@ type Interaction struct {
 func (x *Interaction) Reset() {
 	*x = Interaction{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_graph_proto_msgTypes[3]
+		mi := &file_graph_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -195,7 +250,7 @@ func (x *Interaction) String() string {
 func (*Interaction) ProtoMessage() {}
 
 func (x *Interaction) ProtoReflect() protoreflect.Message {
-	mi := &file_graph_proto_msgTypes[3]
+	mi := &file_graph_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +263,7 @@ func (x *Interaction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Interaction.ProtoReflect.Descriptor instead.
 func (*Interaction) Descriptor() ([]byte, []int) {
-	return file_graph_proto_rawDescGZIP(), []int{3}
+	return file_graph_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Interaction) GetDrugs() []string {
@@ -251,7 +306,7 @@ type Permutation struct {
 func (x *Permutation) Reset() {
 	*x = Permutation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_graph_proto_msgTypes[4]
+		mi := &file_graph_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -264,7 +319,7 @@ func (x *Permutation) String() string {
 func (*Permutation) ProtoMessage() {}
 
 func (x *Permutation) ProtoReflect() protoreflect.Message {
-	mi := &file_graph_proto_msgTypes[4]
+	mi := &file_graph_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,7 +332,7 @@ func (x *Permutation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permutation.ProtoReflect.Descriptor instead.
 func (*Permutation) Descriptor() ([]byte, []int) {
-	return file_graph_proto_rawDescGZIP(), []int{4}
+	return file_graph_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Permutation) GetMedecines() []*I18N {
@@ -306,7 +361,7 @@ type CheckInteractionsRequest struct {
 func (x *CheckInteractionsRequest) Reset() {
 	*x = CheckInteractionsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_graph_proto_msgTypes[5]
+		mi := &file_graph_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -319,7 +374,7 @@ func (x *CheckInteractionsRequest) String() string {
 func (*CheckInteractionsRequest) ProtoMessage() {}
 
 func (x *CheckInteractionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_graph_proto_msgTypes[5]
+	mi := &file_graph_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -332,7 +387,7 @@ func (x *CheckInteractionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckInteractionsRequest.ProtoReflect.Descriptor instead.
 func (*CheckInteractionsRequest) Descriptor() ([]byte, []int) {
-	return file_graph_proto_rawDescGZIP(), []int{5}
+	return file_graph_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CheckInteractionsRequest) GetMedecines() []*Medecine {
@@ -355,12 +410,13 @@ type CheckInteractionsResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	Permutations []*Permutation `protobuf:"bytes,1,rep,name=permutations,proto3" json:"permutations,omitempty"`
+	Notification *Notification  `protobuf:"bytes,2,opt,name=notification,proto3" json:"notification,omitempty"`
 }
 
 func (x *CheckInteractionsResponse) Reset() {
 	*x = CheckInteractionsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_graph_proto_msgTypes[6]
+		mi := &file_graph_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -373,7 +429,7 @@ func (x *CheckInteractionsResponse) String() string {
 func (*CheckInteractionsResponse) ProtoMessage() {}
 
 func (x *CheckInteractionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_graph_proto_msgTypes[6]
+	mi := &file_graph_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,12 +442,19 @@ func (x *CheckInteractionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckInteractionsResponse.ProtoReflect.Descriptor instead.
 func (*CheckInteractionsResponse) Descriptor() ([]byte, []int) {
-	return file_graph_proto_rawDescGZIP(), []int{6}
+	return file_graph_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CheckInteractionsResponse) GetPermutations() []*Permutation {
 	if x != nil {
 		return x.Permutations
+	}
+	return nil
+}
+
+func (x *CheckInteractionsResponse) GetNotification() *Notification {
+	if x != nil {
+		return x.Notification
 	}
 	return nil
 }
@@ -404,7 +467,10 @@ var file_graph_proto_rawDesc = []byte{
 	0x49, 0x31, 0x38, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x65, 0x6e, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6e, 0x61, 0x6d, 0x65, 0x45, 0x6e, 0x12, 0x17, 0x0a,
 	0x07, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x61, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x6e, 0x61, 0x6d, 0x65, 0x41, 0x72, 0x22, 0x41, 0x0a, 0x08, 0x4d, 0x65, 0x64, 0x65, 0x63, 0x69,
+	0x6e, 0x61, 0x6d, 0x65, 0x41, 0x72, 0x22, 0x2e, 0x0a, 0x0c, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69,
+	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x02, 0x65, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x61, 0x72, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x02, 0x61, 0x72, 0x22, 0x41, 0x0a, 0x08, 0x4d, 0x65, 0x64, 0x65, 0x63, 0x69,
 	0x6e, 0x65, 0x12, 0x1f, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x49, 0x31, 0x38, 0x6e, 0x52, 0x04, 0x6e,
 	0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x72, 0x75, 0x67, 0x73, 0x18, 0x02, 0x20, 0x03,
@@ -432,20 +498,23 @@ var file_graph_proto_rawDesc = []byte{
 	0x65, 0x63, 0x69, 0x6e, 0x65, 0x52, 0x09, 0x6d, 0x65, 0x64, 0x65, 0x63, 0x69, 0x6e, 0x65, 0x73,
 	0x12, 0x22, 0x0a, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x6d, 0x65, 0x64, 0x69, 0x63, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x49, 0x64, 0x22, 0x53, 0x0a, 0x19, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e, 0x74,
-	0x65, 0x72, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x36, 0x0a, 0x0c, 0x70, 0x65, 0x72, 0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
-	0x50, 0x65, 0x72, 0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0c, 0x70, 0x65, 0x72,
-	0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x32, 0x66, 0x0a, 0x0c, 0x47, 0x72, 0x61,
-	0x70, 0x68, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x56, 0x0a, 0x11, 0x43, 0x68, 0x65,
-	0x63, 0x6b, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x1f,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x20, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e, 0x74,
-	0x65, 0x72, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6e, 0x49, 0x64, 0x22, 0x8c, 0x01, 0x0a, 0x19, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e,
+	0x74, 0x65, 0x72, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x36, 0x0a, 0x0c, 0x70, 0x65, 0x72, 0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2e, 0x50, 0x65, 0x72, 0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0c, 0x70, 0x65,
+	0x72, 0x6d, 0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x37, 0x0a, 0x0c, 0x6e, 0x6f,
+	0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x13, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0c, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x32, 0x66, 0x0a, 0x0c, 0x47, 0x72, 0x61, 0x70, 0x68, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x12, 0x56, 0x0a, 0x11, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e, 0x74, 0x65,
+	0x72, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x1f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x61, 0x63, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x61, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e,
+	0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -460,29 +529,31 @@ func file_graph_proto_rawDescGZIP() []byte {
 	return file_graph_proto_rawDescData
 }
 
-var file_graph_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_graph_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_graph_proto_goTypes = []interface{}{
 	(*Pass)(nil),                      // 0: proto.Pass
 	(*I18N)(nil),                      // 1: proto.I18n
-	(*Medecine)(nil),                  // 2: proto.Medecine
-	(*Interaction)(nil),               // 3: proto.Interaction
-	(*Permutation)(nil),               // 4: proto.Permutation
-	(*CheckInteractionsRequest)(nil),  // 5: proto.CheckInteractionsRequest
-	(*CheckInteractionsResponse)(nil), // 6: proto.CheckInteractionsResponse
+	(*Notification)(nil),              // 2: proto.Notification
+	(*Medecine)(nil),                  // 3: proto.Medecine
+	(*Interaction)(nil),               // 4: proto.Interaction
+	(*Permutation)(nil),               // 5: proto.Permutation
+	(*CheckInteractionsRequest)(nil),  // 6: proto.CheckInteractionsRequest
+	(*CheckInteractionsResponse)(nil), // 7: proto.CheckInteractionsResponse
 }
 var file_graph_proto_depIdxs = []int32{
 	1, // 0: proto.Medecine.name:type_name -> proto.I18n
 	1, // 1: proto.Permutation.medecines:type_name -> proto.I18n
-	3, // 2: proto.Permutation.interactions:type_name -> proto.Interaction
-	2, // 3: proto.CheckInteractionsRequest.medecines:type_name -> proto.Medecine
-	4, // 4: proto.CheckInteractionsResponse.permutations:type_name -> proto.Permutation
-	5, // 5: proto.GraphService.CheckInteractions:input_type -> proto.CheckInteractionsRequest
-	6, // 6: proto.GraphService.CheckInteractions:output_type -> proto.CheckInteractionsResponse
-	6, // [6:7] is the sub-list for method output_type
-	5, // [5:6] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	4, // 2: proto.Permutation.interactions:type_name -> proto.Interaction
+	3, // 3: proto.CheckInteractionsRequest.medecines:type_name -> proto.Medecine
+	5, // 4: proto.CheckInteractionsResponse.permutations:type_name -> proto.Permutation
+	2, // 5: proto.CheckInteractionsResponse.notification:type_name -> proto.Notification
+	6, // 6: proto.GraphService.CheckInteractions:input_type -> proto.CheckInteractionsRequest
+	7, // 7: proto.GraphService.CheckInteractions:output_type -> proto.CheckInteractionsResponse
+	7, // [7:8] is the sub-list for method output_type
+	6, // [6:7] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_graph_proto_init() }
@@ -516,7 +587,7 @@ func file_graph_proto_init() {
 			}
 		}
 		file_graph_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Medecine); i {
+			switch v := v.(*Notification); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -528,7 +599,7 @@ func file_graph_proto_init() {
 			}
 		}
 		file_graph_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Interaction); i {
+			switch v := v.(*Medecine); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -540,7 +611,7 @@ func file_graph_proto_init() {
 			}
 		}
 		file_graph_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Permutation); i {
+			switch v := v.(*Interaction); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -552,7 +623,7 @@ func file_graph_proto_init() {
 			}
 		}
 		file_graph_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CheckInteractionsRequest); i {
+			switch v := v.(*Permutation); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -564,6 +635,18 @@ func file_graph_proto_init() {
 			}
 		}
 		file_graph_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CheckInteractionsRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_graph_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CheckInteractionsResponse); i {
 			case 0:
 				return &v.state
@@ -582,7 +665,7 @@ func file_graph_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_graph_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

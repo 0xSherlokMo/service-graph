@@ -16,6 +16,11 @@ message I18n {
     string name_ar = 2;
 }
 
+message Notification {
+    string en = 1;
+    string ar = 2;
+}
+
 message Medecine {
     I18n name = 1;
     repeated string drugs = 2;
@@ -40,4 +45,5 @@ message CheckInteractionsRequest {
 
 message CheckInteractionsResponse {
     repeated Permutation permutations = 1;
+    Notification notification = 2;
 }
