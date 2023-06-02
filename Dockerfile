@@ -2,7 +2,7 @@ FROM public.ecr.aws/bitnami/golang:1.19 as builder
 WORKDIR $GOPATH/src/
 COPY . .
 RUN go get -d -v ./...
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags="-s -w" -o main main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o main main.go
 
 FROM scratch
 WORKDIR /src
