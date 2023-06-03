@@ -1,6 +1,7 @@
 package dependencies
 
 import (
+	"context"
 	"log"
 	"os"
 
@@ -14,6 +15,9 @@ func (d *DP) WithNeo4j() *DP {
 		log.Fatalf("error while connecting to neo4j with error %s", err.Error())
 	}
 
+	if err := driver.VerifyConnectivity(context.Background()); err != nil {
+		log.Fatalf("Cannot connect to Neo4j with error %s", err.Error())
+	}
 	d.neo4jDriver = driver
 	return d
 }
