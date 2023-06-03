@@ -17,9 +17,18 @@ func NewDependencyInjection() *DP {
 	neo4jUserName := flag.String("neo4jUsername", "neo4j", "username for neo4j")
 	neo4jPassword := flag.String("neo4jPassword", "neo4j", "password for neo4j")
 	flag.Parse()
-	os.Setenv("neo4j", *neo4j)
-	os.Setenv("neo4jusername", *neo4jUserName)
-	os.Setenv("neo4jpassword", *neo4jPassword)
+
+	if os.Getenv("NEO4J_URI") == "" {
+		os.Setenv("NEO4J_URI", *neo4j)
+	}
+
+	if os.Getenv("NEO4J_USERNAME") == "" {
+		os.Setenv("NEO4J_USERNAME", *neo4jUserName)
+	}
+
+	if os.Getenv("NEO4J_PASSWORD") == "" {
+		os.Setenv("NEO4J_PASSWORD", *neo4jPassword)
+	}
 
 	return &DP{}
 }
