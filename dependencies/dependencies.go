@@ -11,7 +11,7 @@ import (
 
 type DP struct {
 	neo4jDriver neo4j.DriverWithContext
-	mongoClient *mongo.Client
+	mongoDB     *mongo.Database
 }
 
 func NewDependencyInjection() *DP {
@@ -40,7 +40,7 @@ func (d *DP) Shutdown() {
 	if d.neo4jDriver != nil {
 		d.neo4jDriver.Close(ctx)
 	}
-	if d.mongoClient != nil {
-		d.mongoClient.Disconnect(ctx)
+	if d.mongoDB != nil {
+		d.mongoDB.Client().Disconnect(ctx)
 	}
 }

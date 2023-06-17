@@ -13,6 +13,7 @@ const (
 	MONGO_MAX_CONNECTION_POOL = 100
 	MONGO_MIN_CONNECTION_POOL = 2
 	IDLE_TIME_MS              = 0
+	MAIN_DB                   = "admin"
 )
 
 func (d *DP) WithMongo() *DP {
@@ -31,14 +32,16 @@ func (d *DP) WithMongo() *DP {
 	if err != nil {
 		log.Fatalf("failed to ping mongo: %s", err)
 	}
-	d.mongoClient = mongodbClient
+
+	d.mongoDB = mongodbClient.Database(MAIN_DB)
+
 	return d
 }
 
-func (d *DP) GetMongo() *mongo.Client {
-	if d.mongoClient == nil {
+func (d *DP) GetMongo() *mongo.Database {
+	if d.mongoDB == nil {
 		d.WithMongo()
 	}
 
-	return d.mongoClient
+	return d.mongoDB
 }
