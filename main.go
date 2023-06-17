@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	dp := dependencies.NewDependencyInjection().WithNeo4j()
+	dp := dependencies.NewDependencyInjection().WithNeo4j().WithMongo()
 	defer dp.Shutdown()
 
 	go healthCheck()
