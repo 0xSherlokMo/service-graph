@@ -13,7 +13,7 @@ const (
 	MONGO_MAX_CONNECTION_POOL = 100
 	MONGO_MIN_CONNECTION_POOL = 2
 	IDLE_TIME_MS              = 0
-	MAIN_DB                   = "admin"
+	MAIN_DB                   = "graphdb"
 )
 
 func (d *DP) WithMongo() *DP {
