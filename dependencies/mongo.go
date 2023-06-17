@@ -24,6 +24,10 @@ func (d *DP) WithMongo() *DP {
 		options.Client().SetMinPoolSize(MONGO_MIN_CONNECTION_POOL),
 		options.Client().SetMaxConnIdleTime(IDLE_TIME_MS),
 	)
+	if err != nil {
+		log.Fatalf("Cannot create new client on MongoDB due to: %s", err)
+	}
+
 	err = mongodbClient.Connect(ctx)
 	if err != nil {
 		log.Fatalf("Cannot connect to MongoDB due to: %s", err)
