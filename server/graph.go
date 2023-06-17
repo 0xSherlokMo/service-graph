@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"errors"
+	"os"
 
 	"github.com/graduation-fci/service-graph/dependencies"
 	"github.com/graduation-fci/service-graph/domain"
@@ -35,8 +36,15 @@ func (s *DefaultGraphServer) CheckInteractions(ctx context.Context, request *pro
 	}
 
 	permutations := s.graphService.MedecinePermutation(request.GetMedecines(), knowledge)
+	response := &proto.CheckInteractionsResponse{Permutations: permutations}
 
-	return &proto.CheckInteractionsResponse{
-		Permutations: permutations,
-	}, nil
+	if os.Getenv("DISABLE_NOTIFICATION") == "TRUE" {
+		return response, nil
+	}
+
+	response.Notification = s.graphService.GetNotification(permutations, request.MedicationId)
+
+	go s.graphService.SaveReport(permutations, request.MedicationId)
+
+	return response, nil
 }

@@ -1,10 +1,14 @@
 package service
 
 import (
+	"errors"
+	"log"
+
 	"github.com/graduation-fci/service-graph/dependencies"
 	"github.com/graduation-fci/service-graph/domain"
 	"github.com/graduation-fci/service-graph/proto"
 	"github.com/graduation-fci/service-graph/repository"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type GraphService struct {
@@ -56,4 +60,35 @@ func (g *GraphService) MedecinePermutation(medecines []*proto.Medecine, knowledg
 	}
 
 	return perumations
+}
+
+func (g *GraphService) GetNotification(currentReport []*proto.Permutation, medicationId int64) *proto.Notification {
+	if medicationId == 0 {
+		return &proto.Notification{}
+	}
+	report, err := g.drugRepository.LatestReport(medicationId)
+	if err != nil {
+		if !errors.Is(err, mongo.ErrNoDocuments) {
+			log.Printf("[Report] cannot get latest report to build notifications, with error: %s \n", err)
+		}
+
+		return &proto.Notification{}
+	}
+
+	return report.BuildNotification(currentReport)
+}
+
+func (g *GraphService) SaveReport(currentReport []*proto.Permutation, medicationId int64) {
+	if medicationId == 0 {
+		return
+	}
+
+	defer func() {
+		err := recover()
+		if err != nil {
+			log.Printf("[SaveReport] recovered from panic with error %s \n", err)
+		}
+	}()
+	report := domain.Report{}.ToModel(currentReport, medicationId)
+	g.drugRepository.SaveReport(report)
 }
