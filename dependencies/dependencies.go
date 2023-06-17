@@ -6,10 +6,12 @@ import (
 	"os"
 
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type DP struct {
 	neo4jDriver neo4j.DriverWithContext
+	mongoClient *mongo.Client
 }
 
 func NewDependencyInjection() *DP {
@@ -37,5 +39,8 @@ func (d *DP) Shutdown() {
 	ctx := context.Background()
 	if d.neo4jDriver != nil {
 		d.neo4jDriver.Close(ctx)
+	}
+	if d.mongoClient != nil {
+		d.mongoClient.Disconnect(ctx)
 	}
 }
