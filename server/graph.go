@@ -2,13 +2,14 @@ package server
 
 import (
 	"context"
-	"errors"
 	"os"
 
 	"github.com/graduation-fci/service-graph/dependencies"
 	"github.com/graduation-fci/service-graph/domain"
 	"github.com/graduation-fci/service-graph/proto"
 	"github.com/graduation-fci/service-graph/service"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type DefaultGraphServer struct {
@@ -26,7 +27,7 @@ func NewGraphServer(dp *dependencies.DP) *DefaultGraphServer {
 
 func (s *DefaultGraphServer) CheckInteractions(ctx context.Context, request *proto.CheckInteractionsRequest) (*proto.CheckInteractionsResponse, error) {
 	if len(request.GetMedecines()) < 2 {
-		return nil, errors.New("invalid request")
+		return nil, status.Error(codes.InvalidArgument, "invalid_data")
 	}
 
 	set := domain.DrugSet(request.GetMedecines())

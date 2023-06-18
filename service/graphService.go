@@ -9,6 +9,8 @@ import (
 	"github.com/graduation-fci/service-graph/proto"
 	"github.com/graduation-fci/service-graph/repository"
 	"go.mongodb.org/mongo-driver/mongo"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type GraphService struct {
@@ -26,7 +28,7 @@ func NewGraphService(dp *dependencies.DP) *GraphService {
 func (g *GraphService) InteractionsMap(drugSet []domain.Drug) (map[domain.Hash]domain.InteractionMetadata, error) {
 	interactions, err := g.drugRepository.Interaction(drugSet)
 	if err != nil {
-		return nil, err
+		return nil, status.Error(codes.Internal, "graph_connection")
 	}
 
 	interactionsMap := domain.InteractionsMap(interactions)
